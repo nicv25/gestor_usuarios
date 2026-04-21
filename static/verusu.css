@@ -1,0 +1,93 @@
+/* Contenedor */
+.tabla-wrapper {
+    border: 1px solid #2d3550;
+}
+
+/* Header de la tabla */
+.tabla-header {
+    background-color: #1e2235;
+    border-bottom: 1px solid #2d3550;
+}
+
+.tabla-count {
+    background-color: #2d3550;
+    color: #9ca3af;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Tabla */
+.tabla-custom {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #12151f;
+}
+
+/* Encabezados */
+.tabla-custom thead tr {
+    background: linear-gradient(90deg, #1a2540, #1e2a4a);
+}
+
+.tabla-custom thead th {
+    color: #f5c842;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 14px 18px;
+    border: none;
+}
+
+/* Filas */
+.tabla-custom tbody tr:nth-child(odd)  { background-color: #151827; }
+.tabla-custom tbody tr:nth-child(even) { background-color: #1a1d2e; }
+
+.tabla-custom tbody tr:hover {
+    background-color: #1e2a45;
+    transition: background-color 0.2s;
+}
+
+.tabla-custom td {
+    color: #cbd5e1;
+    padding: 14px 18px;
+    font-size: 0.93rem;
+    border-top: 1px solid #1e2235;
+    vertical-align: middle;
+}
+
+/* Fila vacía */
+.tabla-vacia { color: #6b7280; font-size: 0.95rem; background-color: #12151f; }
+
+/* Botones de acciones */
+.btn-tabla {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 2px;
+    transition: background-color 0.2s;
+}
+
+.btn-tabla-editar {
+    background-color: #1e3a5f;
+    color: #93c5fd;
+    border: 1px solid #2a5080;
+}
+.btn-tabla-editar:hover {
+    background-color: #1d4ed8;
+    color: #ffffff;
+}
+
+.btn-tabla-eliminar {
+    background-color: #4a1010;
+    color: #fca5a5;
+    border: 1px solid #7f1d1d;
+}
+.btn-tabla-eliminar:hover {
+    background-color: #991b1b;
+    color: #ffffff;
+}

@@ -1,0 +1,212 @@
+/* ===========================
+   GENERAL
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f1117;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===========================
+   CARD LOGIN
+=========================== */
+.login-card {
+    background-color: #1a1d27;
+    border-radius: 28px;
+    padding: 50px 45px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    border: none;
+}
+
+.login-card h1 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ===========================
+   INPUTS COMPARTIDOS
+=========================== */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #252836 !important;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    height: 56px;
+    overflow: hidden;
+    border: 1.5px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.input-wrapper:focus-within {
+    border-color: #f5c842;
+}
+
+.input-wrapper .input-icon {
+    padding: 0 14px;
+    color: #9ca3af;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    background-color: #252836 !important;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    flex: 1;
+    background-color: #252836 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #e2e8f0 !important;
+    font-size: 1rem;
+    height: 100%;
+    padding: 0 10px 0 0;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.input-wrapper select {
+    cursor: pointer;
+}
+
+.input-wrapper select option {
+    background-color: #252836;
+    color: #e2e8f0;
+}
+
+::placeholder {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* Placeholder del select */
+.input-wrapper select option[value=""][disabled] {
+    color: #9ca3af;
+}
+
+/* ===========================
+   BOTÓN LOGIN / GUARDAR
+=========================== */
+.btn-login {
+    width: 100%;
+    background-color: #f5c842 !important;
+    color: #1a1d27 !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-login:hover {
+    background-color: #e6b800 !important;
+    color: #1a1d27 !important;
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+/* ===========================
+   BOTÓN CANCELAR
+=========================== */
+.btn-cancel {
+    background-color: #252836 !important;
+    color: #9ca3af !important;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1.5px solid #374151 !important;
+    border-radius: 14px !important;
+    padding: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-cancel:hover {
+    background-color: #374151 !important;
+    color: #e2e8f0 !important;
+}
+
+/* ===========================
+   ENLACE OLVIDÉ CONTRASEÑA
+=========================== */
+.forgot-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #9ca3af;
+    font-size: 0.88rem;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: #f5c842;
+}
+
+/* ===========================
+   MENSAJES FLASH
+=========================== */
+.flash-error {
+    background-color: #2d1f1f;
+    color: #f87171;
+    border: 1px solid #7f1d1d;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ===========================
+   MODAL REGISTRAR USUARIO
+=========================== */
+.modal-content.register-card {
+    background-color: #1a1d27 !important;
+    border: none !important;
+    border-radius: 24px !important;
+    padding: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.register-title {
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Header y footer del modal sin fondo extraño */
+.register-card .modal-header,
+.register-card .modal-footer {
+    background-color: #1a1d27 !important;
+    border: none !important;
+}
+
+/* Fondo oscuro detrás del modal */
+.modal-backdrop {
+    background-color: #0f1117 !important;
+    opacity: 0.85 !important;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Empleado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='registraremple.css') }}">
+</head>
+<body>
+
+
+<div class="modal fade" id="modalEmpleado" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 p-2"
+             style="background-color:#1a1d27; box-shadow:0 20px 60px rgba(0,0,0,0.6);">
+
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white fw-bold w-100 text-center" style="font-size:1.6rem;">
+                    Registrar Empleado
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body px-4 pb-4">
+                <form action="{{ url_for('registrar_emple') }}" method="POST">
+
+                    <div class="input-group mb-3 rounded-3 overflow-hidden input-focus">
+                        <span class="input-group-text input-icon">
+                            <i class="bi bi-id-card-fill"></i>
+                        </span>
+                        <input type="text" name="documento_empleado" class="form-control input-dark"
+                               placeholder="Documento del empleado" required>
+                    </div>
+
+                    <div class="input-group mb-3 rounded-3 overflow-hidden input-focus">
+                        <span class="input-group-text input-icon">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        <input type="text" name="nombre_empleado" class="form-control input-dark"
+                               placeholder="Nombre" required>
+                    </div>
+
+                    <div class="input-group mb-3 rounded-3 overflow-hidden input-focus">
+                        <span class="input-group-text input-icon">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        <input type="text" name="apellido_empleado" class="form-control input-dark"
+                               placeholder="Apellido" required>
+                    </div>
+
+                    <div class="input-group mb-3 rounded-3 overflow-hidden input-focus">
+                        <span class="input-group-text input-icon">
+                            <i class="bi bi-briefcase-fill"></i>
+                        </span>
+                        <select name="cargo_empleado" class="form-select input-dark" required>
+                            <option value="" disabled selected hidden>Seleccionar cargo</option>
+                            <option value="Gerente">Gerente </option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Contador">Contador</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3 rounded-3 overflow-hidden input-focus">
+                        <span class="input-group-text input-icon">
+                            <i class="bi bi-building-fill"></i>
+                        </span>
+                        <select name="area_empleado" class="form-select input-dark" required>
+                            <option value="" disabled selected hidden>Seleccionar área</option>
+                            <option value="1">Recursos Humanos</option>
+                            <option value="2">Administración</option>
+                            <option value="3">Contabilidad</option>
+                            <option value="4">Gerencia</option>
+                            <option value="5">Marketing</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3 rounded-3 overflow-hidden input-focus">
+                        <span class="input-group-text input-icon">
+                            <i class="bi bi-clock-fill"></i>
+                        </span>
+                        <input type="number" name="horas_extras" class="form-control input-dark"
+                               placeholder="Horas extras" min="0" value="0" required>
+                    </div>
+
+                    <div class="input-group mb-4 rounded-3 overflow-hidden input-focus">
+                        <span class="input-group-text input-icon">
+                            <i class="bi bi-gift-fill"></i>
+                        </span>
+                        <input type="number" name="bonificacion" class="form-control input-dark"
+                               placeholder="Bonificación" min="0" value="0" step="1000" required>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <button type="button" class="btn w-50 btn-cancelar rounded-3"
+                                data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn w-50 btn-guardar rounded-3">
+                            Guardar
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

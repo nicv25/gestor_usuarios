@@ -1,0 +1,52 @@
+<div class="rounded-3 overflow-hidden mt-2 tabla-wrapper">
+    <div class="d-flex justify-content-between align-items-center px-3 py-2 tabla-header">
+        <span class="text-white fw-semibold">Lista de Usuarios</span>
+        <span class="tabla-count">{{ user|length }} registros</span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table tabla-custom mb-0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Rol</th>
+                    <th>Documento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if user %}
+                    {% for u in user %}
+                    <tr>
+                        <td>{{ u[0] }}</td>
+                        <td>{{ u[1] }}</td>
+                        <td>{{ u[2] }}</td>
+                        <td>{{ u[3] }}</td>
+                        <td>{{ u[4] }}</td>
+                        <td>
+                            <a href="{{ url_for('editar_usu', id=u[0]) }}"
+                               class="btn-tabla btn-tabla-editar">
+                                Editar
+                            </a>
+
+                            <a href="{{ url_for('eliminarusu', id=u[0]) }}"
+                               class="btn-tabla btn-tabla-eliminar"
+                               onclick="return confirm('¿Eliminar este usuario?')">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center py-4 tabla-vacia">
+                            No hay usuarios registrados
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

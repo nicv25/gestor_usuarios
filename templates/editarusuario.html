@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editarusuario.css') }}">
+</head>
+<body>
+
+    <div class="contenedor-formulario">
+        <div class="tarjeta-formulario">
+
+            <div class="encabezado">
+                <h5>Editar Usuario</h5>
+            </div>
+
+            <div class="cuerpo">
+                <form action="{{ url_for('actualizar_usuarios', id=usu[0]) }}" method="POST">
+
+                    <input type="hidden" name="id_usuario" value="{{ usu[0] }}">
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text icono">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        <input type="text"
+                               name="nombre_usuario"
+                               class="form-control campo"
+                               value="{{ usu[1] }}"
+                               placeholder="Nombre de usuario"
+                               required>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text icono">
+                            <i class="bi bi-lock-fill"></i>
+                        </span>
+                        <input type="text"
+                               name="contraseña_usuario"
+                               class="form-control campo"
+                               value="{{ usu[2] }}"
+                               placeholder="Contraseña"
+                               required>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text icono">
+                            <i class="bi bi-shield-fill"></i>
+                        </span>
+                        <select name="rol_usuario" class="form-select campo" required>
+                            <option value="" disabled hidden>Seleccionar rol</option>
+                            <option value="Administrador" {% if usu[3] == 'Administrador' %}selected{% endif %}>Administrador</option>
+                            <option value="Empleado" {% if usu[3] == 'Empleado' %}selected{% endif %}>Empleado</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text icono">
+                            <i class="bi bi-id-card-fill"></i>
+                        </span>
+                        <input type="text"
+                               name="documento_usuario"
+                               class="form-control campo"
+                               value="{{ usu[4] }}"
+                               placeholder="Documento del empleado"
+                               required>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <a href="{{ url_for('inicio') }}" class="btn btn-cancelar w-50">Cancelar</a>
+                        <button type="submit" class="btn btn-actualizar w-50">Actualizar</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
