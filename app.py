@@ -35,7 +35,7 @@ def login_form():
         if rol.lower() == 'administrador':
             return redirect(url_for('inicio'))
         elif rol.lower() == 'empleado':
-            return "Bienvenido empleado"
+            return redirect(url_for('panel_empleado'))
         else:
             return "Rol no válido"
     else:
@@ -60,6 +60,85 @@ def inicio():
     conn.close()
 
     return render_template('index.html', user=usuarios, emp=empleados )
+
+@app.route('/panel_empleado')
+def panel_empleado():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
+    
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM empleados AS e INNER JOIN usuarios AS u ON e.documento_Emple = u.documento_Emple WHERE u.usuario = %s" ,(session['usuario'],))
+    empleado = cursor.fetchone()
+    documento = empleado[1]
+    
+    cursor.execute("SELECT a.Nombre_A FROM areas AS a INNER JOIN empleados AS e ON a.id_area = e.id_area WHERE e.documento_Emple = %s" , (documento,))
+    area = cursor.fetchone()
+    
+
+    cursor.close()
+    conn.close()
+    
+    return render_template('panel_empleado.html', emp = empleado, area = area[0] if area else None)
+
+
+
+
+
+@app.route('/editar_perfil_empleado', methods=['GET', 'POST'])
+def editar_perfil_empleado():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    # Obtener documento del empleado en sesión
+    cursor.execute(
+        "SELECT documento_Emple FROM usuarios WHERE usuario = %s",
+        (session['usuario'],)
+    )
+    usuario = cursor.fetchone()
+    documento = usuario[0]
+
+    if request.method == 'POST':
+        nombre   = request.form['nombre']
+        apellido = request.form['apellido']
+        cargo    = request.form['cargo']
+        id_area  = request.form['id_area']
+
+        cursor.execute(""" UPDATE empleados SET nombre_Emple = %s, apellido_Emple = %s, cargo = %s, id_area = %s WHERE documento_Emple = %s """, (nombre, apellido, cargo, id_area, documento))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        flash('Datos actualizados correctamente', 'success')
+        return redirect(url_for('panel_empleado'))
+
+    cursor.execute(
+        "SELECT * FROM empleados WHERE documento_Emple = %s",
+        (documento,)
+    )
+    empleado = cursor.fetchone()
+
+    # Cargar todas las áreas para el select
+    cursor.execute("SELECT id_area, Nombre_A FROM areas")
+    areas = cursor.fetchall()
+
+    # Área actual del empleado (para marcar selected en el select)
+    emp_area = empleado[11]  # ajusta el índice según tu tabla
+
+    cursor.close()
+    conn.close()
+
+    return render_template(
+        'editar_perfil_empleado.html',
+        emp=empleado,
+        areas=areas,
+        emp_area=emp_area
+    )
 
 
 @app.route('/Salir')
